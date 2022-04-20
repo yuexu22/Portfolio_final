@@ -12,10 +12,10 @@ body{
     
 }
 #page3body{
-background-color: orange;
+background-color: lightgray;
 }
 #page2body{
-    background-color: lightseagreen;
+    background-color: lightgray;
 }
 
 
@@ -155,7 +155,7 @@ img:hover{
 }
 
 img{
-    
+    padding: -5px;
     height: auto;
     border: 2px solid grey;
     border-radius: 10px;   
