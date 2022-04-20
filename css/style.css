@@ -3,40 +3,69 @@ Make the font larger too.*/
 body{
     background-color: antiquewhite;
     background-image: url("../images/elcarito-background.jpg");
-	margin:1%;
+	margin:50%;
 	padding:1%;
 	font-size:110%;
     font-family: 'Roboto','Courier New','Gill Sans MT', monospace;
     
 }
 header nav ul{
+    
     display: flex;
     flex-direction: row;
     flex-wrap:wrap ;
     justify-content: space-between;
 }
-.skip a{
-    background: white;
-    left: 0;
-    padding: 6px;
-    position: absolute;
+
+h2{
+    padding-top: 20px;
+    text-align: center;
+}
+
+a.skip {
+    animation: mymove 10s;
+    animation-fill-mode: forwards;
     top: -40px;
-    -webkit-transition: top 1s ease-out;
-    transition: top 1s ease-out;
     z-index: 1;
-  }
-  
-.skip a:focus{
-    top:20px;
     position: absolute;
-    color: black;
-    text-decoration-style: solid;
-  }
+}
+
+@keyframes mymove {
+    from{width: 25px; opacity: 0.3; color: white}
+    to{width: 250px; opacity: 1; color: white}
+}
+
   
-  *:focus{
+*:focus{
     border: 2px solid black;
   }
-
+section{
+    position:relative;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section:before
+{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 10000;
+    background: linear-gradient(to top, #0a2a43, transparent);
+}
+section img{
+    position:absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
 
 /*Make the h1 heading bigger with a bold font*/
 h1{
@@ -45,8 +74,27 @@ h1{
     text-align: center;
     padding-top: 25px;
     padding-bottom: 25px;
-    color: darkblue;
+    color: #484848;
+    font-size: 50px;
 }
+h1 span{
+    transition: 0.5s linear;
+}
+h1:hover span:nth-child(1){
+    margin-right: 5px
+  }
+  h1:hover span:nth-child(1):after{
+    content: "'";
+  }
+  h1:hover span:nth-child(2){
+    margin-left: 30px
+  }
+  h1:hover span{
+    color: #fff;
+    text-shadow: 0 0 10px #fff,
+                 0 0 20px #fff, 
+                 0 0 40px #fff;
+  }
 
 h5{
     font-size: 15px;;
@@ -85,20 +133,24 @@ img:hover{
 .gallery{
     
     display: grid;
-    grid-template-rows: repeat (9,auto);
+    grid-template-rows: repeat (2,1fr);
     grid: 2px;
     
 }
+
+.image-container{
+    display: flex;
+    justify-content: center;
+}
+
 img{
-    height: auto;
-   border: 2px solid grey;
-    padding: 2px;
-    border-radius: 10px;
-    margin: 10% 10% 10% 10%;
-    display: block;
     
+    height: auto;
+    border: 2px solid grey;
+    border-radius: 10px;   
 
 }
+
 .flip-card{
  
     background-color: transparent;
@@ -106,8 +158,9 @@ img{
     height: 250px;
     perspective: 1000px;
     border-radius: 8px;
-    display: block;
-    margin: auto;
+    display: flex;
+    margin: 10%;
+   padding: 30px;
     z-index: 2;
   }
 
@@ -149,21 +202,37 @@ img{
 /*flex img*/
 
 .flex-gallery{
+    margin-left: 100px;
+    margin-bottom: 40px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
 }
+
 .single-img{
-    padding: 10px 0px;
+    align-items: center;
+    flex: 0 0 33.3333%;
+    padding: 10px 10px;
 }
+
+
 img:hover{
     opacity: .5s;
     transition:0.9s;
 }
 
+.parallax{
+    background-image: url("../images/mesume.jpg");
 
+    min-height:500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 
 
@@ -219,8 +288,6 @@ height: 50%;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     outline: none;
     font-family: 'Roboto', sans-serif;
@@ -260,33 +327,44 @@ margin-right: 4%;
     height: 150px;
 }
 
-.btn{
-    background:#39b7dd;
-    text-align: center;
-    padding: 15px;
-    border-radius: 5px;
-    color:#fff;
-    cursor:pointer;
-    text-transform: uppercase;
-}
-
-
-
-
-
-
-
-
 
 nav li{
-	padding: 30px;
+	padding: 10px;
  
 }
 
 
 nav li .current{
-    background-color: pink;
+    border-radius: 6px;
+
 }
+
+
+
+.btn-round{
+    background-color: cornflowerblue;
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+    border:none;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1;    
+}
+
+.btn-round:hover {
+    transform: translateY(-10px);
+  }
+
+.btn-home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
 
 
 footer{
@@ -295,4 +373,32 @@ footer{
     color:black;
     padding: 100px 0px;
 }
+
+.myNav{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: end;
+}
+
+
+
+@media screen and (min-width: 768px){
+    .myNav{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-end;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .single-img{
+        flex: 0 0 25%;
+    }
+}
+
+
+
+
 
